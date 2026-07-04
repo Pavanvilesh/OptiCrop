@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌱 OptiCrop</h1>
+
+<h2>Recommended Crop</h2>
+
+<div class="result-card">
+
+<h1 style="color:green;">{{ crop }}</h1>
+
+<p><b>Nitrogen:</b> {{ N }}</p>
+
+<p><b>Phosphorus:</b> {{ P }}</p>
+
+<p><b>Potassium:</b> {{ K }}</p>
+
+<p><b>Temperature:</b> {{ temperature }} °C</p>
+
+<p><b>Humidity:</b> {{ humidity }} %</p>
+
+<p><b>Soil pH:</b> {{ ph }}</p>
+
+<p><b>Rainfall:</b> {{ rainfall }} mm</p>
+
+</div>
+
+<br>
+
+<a href="/">
+
+<button>🔄 Predict Again</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>
