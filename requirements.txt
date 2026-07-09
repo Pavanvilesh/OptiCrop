@@ -1,0 +1,42 @@
+import sqlite3
+
+def create_database():
+
+    conn = sqlite3.connect("opticrop.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS predictions(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nitrogen REAL,
+        phosphorus REAL,
+        potassium REAL,
+        temperature REAL,
+        humidity REAL,
+        ph REAL,
+        rainfall REAL,
+        crop TEXT
+    )
+    """)
+
+    conn.commit()
+    conn.close()
+
+
+def save_prediction(n, p, k, temp, hum, ph, rain, crop):
+
+    conn = sqlite3.connect("opticrop.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    INSERT INTO predictions
+    (nitrogen,phosphorus,potassium,
+    temperature,humidity,ph,rainfall,crop)
+
+    VALUES(?,?,?,?,?,?,?,?)
+    """,
+
+    (n,p,k,temp,hum,ph,rain,crop))
+
+    conn.commit()
+    conn.close()

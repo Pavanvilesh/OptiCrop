@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Prediction History</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🌱 OptiCrop</h1>
+
+<nav>
+
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+<a href="/history">History</a>
+
+</nav>
+
+</header>
+
+
+<div class="container">
+
+<h2>Prediction History</h2>
+
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Crop</th>
+</tr>
+
+
+{% for row in predictions %}
+
+<tr>
+
+<td>{{row[0]}}</td>
+
+<td>{{row[1]}}</td>
+
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+</div>
+
+
+</body>
+
+</html>

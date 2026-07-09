@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OptiCrop Dashboard</title>
+
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>🌱 OptiCrop Dashboard</h1>
+
+
+<nav>
+
+<a href="/">Home</a>
+
+<a href="/dashboard">Dashboard</a>
+
+<a href="/history">History</a>
+
+<a href="/about">About</a>
+
+<a href="/contact">Contact</a>
+
+</nav>
+
+
+</header>
+
+
+
+
+
+<div class="container">
+
+
+<h2>📊 Smart Agriculture Dashboard</h2>
+
+
+
+
+
+<!-- Total Predictions -->
+
+
+<div class="card">
+
+<h2>🌾 Total Predictions</h2>
+
+
+<h1 style="color:green;">
+
+{{ total }}
+
+</h1>
+
+
+<p>
+Total crops recommended by AI
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Weather Section -->
+
+
+<div class="card">
+
+
+<h2>🌦 Current Weather</h2>
+
+
+<p>
+🌡 Temperature :
+<b>{{ weather["temperature"] }}</b>
+</p>
+
+
+<p>
+💧 Humidity :
+<b>{{ weather["humidity"] }}</b>
+</p>
+
+
+<p>
+🌧 Rainfall :
+<b>{{ weather["rainfall"] }}</b>
+</p>
+
+
+<p>
+✅ Condition :
+<b>{{ weather["condition"] }}</b>
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+
+<!-- Prediction History -->
+
+
+<div class="card">
+
+
+<h2>📋 Recent Predictions</h2>
+
+
+<table>
+
+
+<tr>
+
+<th>ID</th>
+
+<th>Crop</th>
+
+</tr>
+
+
+
+{% for row in predictions %}
+
+
+<tr>
+
+<td>
+{{ row[0] }}
+</td>
+
+
+<td>
+{{ row[1] }}
+</td>
+
+
+</tr>
+
+
+
+{% endfor %}
+
+
+</table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- Crop Chart -->
+
+
+<div class="card">
+
+
+<h2>📈 Crop Prediction Analysis</h2>
+
+
+<canvas id="cropChart"></canvas>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+let cropNames = [];
+
+let cropValues = [];
+
+
+
+{% for item in statistics %}
+
+
+cropNames.push("{{ item[0] }}");
+
+cropValues.push({{ item[1] }});
+
+
+{% endfor %}
+
+
+
+
+
+
+new Chart(
+
+document.getElementById("cropChart"),
+
+{
+
+
+type:"bar",
+
+
+data:{
+
+
+labels:cropNames,
+
+
+datasets:[
+
+{
+
+
+label:"Number of Predictions",
+
+
+data:cropValues
+
+
+}
+
+]
+
+
+},
+
+
+
+options:{
+
+
+responsive:true
+
+
+}
+
+
+
+}
+
+
+);
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<footer>
+
+
+<p>
+© 2026 OptiCrop | Smart Agriculture System
+</p>
+
+
+</footer>
+
+
+
+</body>
+
+</html>

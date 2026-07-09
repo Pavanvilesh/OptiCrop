@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact - OptiCrop</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>🌱 OptiCrop</h1>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/about">About</a>
+
+        <a href="/contact">Contact</a>
+
+    </nav>
+
+</header>
+
+<div class="container">
+
+    <h2>Contact Us</h2>
+
+    <p>
+        Have any questions or suggestions?
+        Feel free to contact us.
+    </p>
+
+    <form>
+
+        <input
+            type="text"
+            placeholder="Enter Your Name"
+            required>
+
+        <input
+            type="email"
+            placeholder="Enter Your Email"
+            required>
+
+        <textarea
+            rows="6"
+            placeholder="Write your message..."
+            required></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Send Message
+        </button>
+
+    </form>
+
+    <br>
+
+    <div class="card">
+
+        <h3>Project Details</h3>
+
+        <p><b>Project:</b> OptiCrop</p>
+
+        <p><b>Developer:</b> farmershelpline</p>
+
+        <p><b>Technology:</b> Python Flask + Machine Learning</p>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <p>
+        © 2026 OptiCrop | Smart Agriculture
+    </p>
+
+</footer>
+
+</body>
+
+</html>

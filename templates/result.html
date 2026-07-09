@@ -4,52 +4,198 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Prediction Result</title>
+    <title>Crop Result - OptiCrop</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
+
 <body>
+
+
+<header>
+
+    <h1>🌱 OptiCrop</h1>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/history">History</a>
+
+        <a href="/about">About</a>
+
+        <a href="/contact">Contact</a>
+
+    </nav>
+
+</header>
+
+
 
 <div class="container">
 
-<h1>🌱 OptiCrop</h1>
 
-<h2>Recommended Crop</h2>
+    <h2>🌾 Crop Recommendation Result</h2>
 
-<div class="result-card">
 
-<h1 style="color:green;">{{ crop }}</h1>
 
-<p><b>Nitrogen:</b> {{ N }}</p>
+    <div class="card">
 
-<p><b>Phosphorus:</b> {{ P }}</p>
 
-<p><b>Potassium:</b> {{ K }}</p>
+        <h1 style="color:green;">
 
-<p><b>Temperature:</b> {{ temperature }} °C</p>
+            {{ crop }}
 
-<p><b>Humidity:</b> {{ humidity }} %</p>
+        </h1>
 
-<p><b>Soil pH:</b> {{ ph }}</p>
 
-<p><b>Rainfall:</b> {{ rainfall }} mm</p>
+
+        <img src="{{ url_for('static', filename='images/' + image) }}"
+        class="crop-image"
+        alt="Crop Image">
+
+
+
+        <h3>✅ Recommended Crop</h3>
+
+        <p>
+            Based on your soil and climate conditions,
+            OptiCrop recommends growing <b>{{ crop }}</b>.
+        </p>
+
+
+    </div>
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>🌱 Soil & Climate Details</h2>
+
+
+        <table>
+
+
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+
+
+            <tr>
+                <td>Nitrogen</td>
+                <td>{{ nitrogen }}</td>
+            </tr>
+
+
+            <tr>
+                <td>Phosphorus</td>
+                <td>{{ phosphorus }}</td>
+            </tr>
+
+
+            <tr>
+                <td>Potassium</td>
+                <td>{{ potassium }}</td>
+            </tr>
+
+
+            <tr>
+                <td>Temperature</td>
+                <td>{{ temperature }} °C</td>
+            </tr>
+
+
+            <tr>
+                <td>Humidity</td>
+                <td>{{ humidity }} %</td>
+            </tr>
+
+
+            <tr>
+                <td>Soil pH</td>
+                <td>{{ ph }}</td>
+            </tr>
+
+
+            <tr>
+                <td>Rainfall</td>
+                <td>{{ rainfall }} mm</td>
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
+
+
+
+    <div class="card">
+
+
+        <h2>🌱 Fertilizer Recommendation</h2>
+
+
+        {% if fertilizer %}
+
+        <h3 style="color:green;">
+            {{ fertilizer }}
+        </h3>
+
+
+        {% else %}
+
+        <p>
+            Fertilizer suggestion will be added soon.
+        </p>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+
+
+
+    <a href="/">
+
+        <button>
+            Try Another Prediction
+        </button>
+
+    </a>
+
+
 
 </div>
 
-<br>
 
-<a href="/">
 
-<button>🔄 Predict Again</button>
 
-</a>
+<footer>
 
-</div>
+<p>
+© 2026 OptiCrop | Smart Agriculture System
+</p>
+
+</footer>
+
+
 
 </body>
 
